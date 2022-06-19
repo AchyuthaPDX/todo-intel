@@ -6,6 +6,10 @@ const reducer = (prevState, action)=>{
     case "TOGGLE":
       return{addlists: prevState.addlists.map(t=>{if(t.id=== action.payload){t.complete = 
       !t.complete}; return t}) }
+    case "REMOVE":
+      return{ addlists: prevState.addlists.filter(addlist => addlist.id !== action.payload)}
+    case "ADD":
+      return{ addlists: [...prevState.addlists , action.payload]}
   default:
     return prevState
   }
