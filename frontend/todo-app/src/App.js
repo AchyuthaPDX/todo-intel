@@ -12,7 +12,8 @@ function App() {
       <Header></Header>
       <Mainlist></Mainlist>
       <Addlists></Addlists>
-    </div></Provider>
+    </div>
+  </Provider>
   );
 }
 
