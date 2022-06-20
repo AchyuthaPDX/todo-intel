@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-
+import axios from "axios"
 const Context = React.createContext()
 const reducer = (prevState, action)=>{
   switch(action.type){
     case "TOGGLE":
-      return{addlists: prevState.addlists.map(t=>{if(t.id=== action.payload){t.complete = 
+      return{addlists: prevState.addlists.map(t=>{if(t._id=== action.payload){t.complete = 
       !t.complete}; return t}) }
     case "REMOVE":
-      return{ addlists: prevState.addlists.filter(addlist => addlist.id !== action.payload)}
+      return{ addlists: prevState.addlists.filter(addlist => addlist._id !== action.payload)}
     case "ADD":
       return{ addlists: [...prevState.addlists , action.payload]}
   default:
@@ -16,24 +16,12 @@ const reducer = (prevState, action)=>{
 }
 export class Provider extends Component {
   state ={
-    addlists:[
-        {
-          id:1,
-          title:"check emails",
-          complete:false
-        },
-        {
-          id:2,
-          title:"Time stamp adding",
-          complete:false
-        },
-        {
-          id:3,
-          title:" Adding RESTApi",
-          complete:false
-        }        
-      ],
+    addlists:[],
       dispatch:(action) => this.setState(prevState => reducer(prevState,action))
+    }
+    componentDidMount(){
+      axios.get('/addlists')
+      .then(res=>this.setState({addlists:res.data}))
     }
   render() {
     return (

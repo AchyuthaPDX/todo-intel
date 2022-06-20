@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {Consumer} from '../func-context'
+import axios from "axios"
+
 export default class Mainlist extends Component {
   state={
     id:4,
@@ -14,7 +16,9 @@ export default class Mainlist extends Component {
   add=(dispatch, e)=>{
     e.preventDefault()
     const newAddlist = this.state
-    dispatch({type:"ADD",payload:newAddlist} )
+    axios.post("/addlists", newAddlist)
+    .then(res=>dispatch({type:"ADD",payload:res.data} ))
+    
     this.setState({title:" "})
   }
   render() {
