@@ -27,7 +27,8 @@ export default class Mainlist extends Component {
         const {dispatch} = value
         return <form onSubmit={this.add.bind(this, dispatch)}>
         <input type="text" className="form-control rounded-0" placeholder=" Type your task here..." onChange={this.update} value={this.state.title}/>
-        <button className='form-control rounded-0 btn-secondary' type="submit"> Make Task</button>
+        <button className='form-control rounded-0 btn-secondary' type="submit"> + </button>
+  
     </form>
     
       }}</Consumer>

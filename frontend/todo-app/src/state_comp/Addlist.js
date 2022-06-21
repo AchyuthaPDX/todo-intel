@@ -17,7 +17,7 @@ export default class Addlist extends Component {
   render() {
     const {title,_id} = this.props.addlist
     return (
-      <Consumer>{value=> {
+      <Consumer className="card">{value=> {
         const {dispatch } = value
         return <h3 className="text-dark text-center p-1 bg-light border-bottom border-top" style ={this.style()}> 
         <i className=" d-flex far fa-window-close fa-sm float-right m-2 text-danger" aria-hidden="true" onClick={this.remove.bind(this,_id,dispatch)}></i> {title}
